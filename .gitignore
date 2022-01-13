@@ -1,0 +1,8 @@
+node_modules/
+src/packages/
+src/Skybrud.VideoPicker/bin/
+src/Skybrud.VideoPicker/obj/
+src/.vs/
+/.vs
+src/Skybrud.VideoPicker.Skyfish/bin/
+src/Skybrud.VideoPicker.Skyfish/obj/
