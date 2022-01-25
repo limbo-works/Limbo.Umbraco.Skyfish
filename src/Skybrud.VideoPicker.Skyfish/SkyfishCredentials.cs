@@ -4,29 +4,29 @@ using Skybrud.Essentials.Xml.Extensions;
 using Skybrud.VideoPicker.Models.Config;
 
 namespace Skybrud.VideoPicker.Skyfish {
-    
+
     /// <summary>
     /// Class representing a single set of credentials for 
     /// </summary>
     public class SkyfishCredentials : IProviderCredentials {
-        
+
         #region Properties
 
         /// <summary>
         /// Gets the unique ID of the credentials.
         /// </summary>
         public Guid Id { get; }
-        
+
         /// <summary>
         /// Gets the friendly name of the credentials.
         /// </summary>
         public string Name { get; }
-        
+
         /// <summary>
         /// Gets the public key of the credentials.
         /// </summary>
         public string PublicKey { get; }
-        
+
         /// <summary>
         /// Gets the secret key of the credentials.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Skybrud.VideoPicker.Skyfish {
         /// Gets the password of the credentials.
         /// </summary>
         public string Password { get; }
-        
+
         /// <summary>
         /// Gets whether this credentials object is configured.
         /// </summary>

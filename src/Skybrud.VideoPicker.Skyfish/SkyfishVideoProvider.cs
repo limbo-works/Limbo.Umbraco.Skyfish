@@ -17,8 +17,7 @@ using Skybrud.VideoPicker.PropertyEditors.Video;
 using Skybrud.VideoPicker.Providers;
 using Skybrud.VideoPicker.Services;
 
-namespace Skybrud.VideoPicker.Skyfish
-{
+namespace Skybrud.VideoPicker.Skyfish {
 
     public class SkyfishVideoProvider : IVideoProvider {
 
@@ -31,13 +30,13 @@ namespace Skybrud.VideoPicker.Skyfish
         public string EmbedView => "/App_Plugins/Skybrud.VideoPicker.Skyfish/Views/Config.html";//"/App_Plugins/Skybrud.VideoPicker/Views/DefaultProvider/Embed.html";
 
         public bool IsMatch(VideoPickerService service, string source, out IVideoOptions options) {
-            
+
             options = null;
 
             if (!source.Contains("skyfish.com")) return false;
 
-            var videoId = source.Split('/').LastOrDefault();           
-            
+            var videoId = source.Split('/').LastOrDefault();
+
             // Return true as we have an video name at this point
             options = new SkyfishVideoOptions(videoId);
             return true;
@@ -63,7 +62,7 @@ namespace Skybrud.VideoPicker.Skyfish
 
             // As thumbnail URLs received from the Skyfish API expire over time, we need to create our own solution to handle thumbnails URLs
             VideoThumbnail[] thumbnails = GetThumbnails(video, config, credentials);
-            
+
             VideoProviderDetails provider = new VideoProviderDetails(Alias, Name);
 
             SkyfishVideoDetails details = new SkyfishVideoDetails(video, thumbnails);
@@ -97,10 +96,10 @@ namespace Skybrud.VideoPicker.Skyfish
 
         internal bool IsValidName(string videoName) {
             return videoName != null && Regex.IsMatch(videoName, "^([0-9_]+)$");
-        }       
+        }
 
         internal VideoThumbnail[] GetThumbnails(SkyfishVideo video, SkyfishConfig config, SkyfishCredentials credentials) {
-            
+
             List<VideoThumbnail> thumbnails = new List<VideoThumbnail>();
 
             if (video.ThumbnailUrl.HasValue()) thumbnails.Add(new VideoThumbnail(0, 0, video.ThumbnailUrl));

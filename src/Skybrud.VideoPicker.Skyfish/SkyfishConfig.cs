@@ -2,13 +2,12 @@
 using Skybrud.Essentials.Xml.Extensions;
 using Skybrud.VideoPicker.Models.Config;
 
-namespace Skybrud.VideoPicker.Skyfish
-{
+namespace Skybrud.VideoPicker.Skyfish {
 
     /// <summary>
     /// Class representing the configuration for the <strong>Skyfish</strong> provider.
     /// </summary>
-    public class SkyfishConfig : IProviderConfig  {
+    public class SkyfishConfig : IProviderConfig {
 
         #region Properties
 

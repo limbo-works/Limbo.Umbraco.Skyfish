@@ -5,7 +5,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.VideoPicker.Models.Videos;
 
 namespace Skybrud.VideoPicker.Skyfish {
-    
+
     public class SkyfishEmbedOptions : IVideoEmbedOptions {
 
         private readonly SkyfishVideoDetails _details;

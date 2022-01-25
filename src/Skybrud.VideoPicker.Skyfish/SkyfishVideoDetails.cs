@@ -4,8 +4,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.VideoPicker.Models.Videos;
 
-namespace Skybrud.VideoPicker.Skyfish
-{
+namespace Skybrud.VideoPicker.Skyfish {
 
     public class SkyfishVideoDetails : IVideoDetails {
 
