@@ -104,7 +104,7 @@ namespace Skybrud.VideoPicker.Skyfish
             List<VideoThumbnail> thumbnails = new List<VideoThumbnail>();
 
             if (video.ThumbnailUrl.HasValue()) thumbnails.Add(new VideoThumbnail(0, 0, video.ThumbnailUrl));
-            if (video.ThumbnailUrlSSL.HasValue()) thumbnails.Add(new VideoThumbnail(0, 0, video.ThumbnailUrlSSL));
+            if (video.ThumbnailUrlSsl.HasValue()) thumbnails.Add(new VideoThumbnail(0, 0, video.ThumbnailUrlSsl));
 
             return thumbnails.ToArray();
 

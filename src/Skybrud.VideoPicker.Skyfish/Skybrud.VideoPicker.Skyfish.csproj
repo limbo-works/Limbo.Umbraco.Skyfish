@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Limbo.Integrations.Skyfish" Version="1.0.0" />
+    <PackageReference Include="Limbo.Integrations.Skyfish" Version="1.0.0-beta001" />
     <PackageReference Include="Skybrud.VideoPicker" Version="2.0.0-alpha006">
       <ExcludeAssets>contentFiles</ExcludeAssets>
     </PackageReference>

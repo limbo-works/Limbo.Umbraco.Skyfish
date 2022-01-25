@@ -32,7 +32,7 @@ namespace Skybrud.VideoPicker.Skyfish
 
         public SkyfishVideoDetails(SkyfishVideo video, VideoThumbnail[] thumbnails) {
             Id = video.VideoId.ToString();
-            Title = string.IsNullOrWhiteSpace(video.VideoTitle) ? video.Filename : video.VideoTitle;
+            Title = string.IsNullOrWhiteSpace(video.VideoTitle) ? video.FileName : video.VideoTitle;
             Description = video.VideoDescription;
             EmbedUrl = video.EmbedUrl;
             Thumbnails = thumbnails;
