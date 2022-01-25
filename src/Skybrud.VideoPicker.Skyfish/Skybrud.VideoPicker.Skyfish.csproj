@@ -1,18 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+
     <TargetFramework>net472</TargetFramework>
+    <ContentTargetFolders>content</ContentTargetFolders>
   </PropertyGroup>
 
   <PropertyGroup>
     <Version>1.0.0</Version>
-    <Authors>Jesper Mayntzhusen</Authors>
     <Company>Limbo</Company>
     <Product>Skybrud.VideoPicker</Product>
-    <Description>Skyfish addon for Skybrud.VideoPicker.</Description>
+    <Authors>Jesper Mayntzhusen</Authors>
     <Copyright>Copyright © 2022</Copyright>
+    <Description>Skyfish addon for Skybrud.VideoPicker.</Description>
   </PropertyGroup>
 
+  <!-- Information for the NuGet package -->
   <PropertyGroup>
     <PackageId>Skybrud.VideoPicker.Skyfish</PackageId>
     <PackageTags>Skybrud, Limbo, Umbraco, Video, Skyfish</PackageTags>
@@ -23,6 +27,7 @@
     <RepositoryUrl>https://github.com/skybrud/Skybrud.VideoPicker.Skyfish</RepositoryUrl>
   </PropertyGroup>
 
+  <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Limbo.Integrations.Skyfish" Version="1.0.0-beta001" />
     <PackageReference Include="Skybrud.VideoPicker" Version="2.0.0-alpha006">
@@ -33,34 +38,24 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
-
+  <!-- Include backoffice assets -->
   <ItemGroup>
     <Content Include="App_Plugins\Skybrud.VideoPicker.Skyfish\**\*.js" />
     <Content Include="App_Plugins\Skybrud.VideoPicker.Skyfish\**\*.css" />
     <Content Include="App_Plugins\Skybrud.VideoPicker.Skyfish\**\*.html" />
     <Content Include="App_Plugins\Skybrud.VideoPicker.Skyfish\**\*.xml" />
-    <Content Remove="App_Plugins\Skybrud.VideoPicker.Skyfish\Scripts\Controllers\Config.js" />
-    <Content Remove="App_Plugins\Skybrud.VideoPicker.Skyfish\Views\Config.html" />
-    <None Remove="App_Plugins\Skybrud.VideoPicker.Skyfish\Styles\Default.css" />
     <Content Include="App_Plugins\Skybrud.VideoPicker.Skyfish\package.manifest" />
-    <Content Include="App_Plugins\Skybrud.VideoPicker.Skyfish\Styles\Default.less" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="App_Plugins\Skybrud.VideoPicker.Skyfish\Styles\Default.css">
+    <Content Include="App_Plugins\Skybrud.VideoPicker.Skyfish\Styles\Default.css">
       <DependentUpon>Default.less</DependentUpon>
     </Content>
   </ItemGroup>
 
+  <!-- Include package icon for NuGet -->
   <ItemGroup>
-    <Content Update="App_Plugins\Skybrud.VideoPicker.Skyfish\Styles\Default.min.css">
-      <DependentUpon>Default.css</DependentUpon>
-    </Content>
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
+  <!-- Build ZIP and Umbraco package for release -->
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(ConfigurationName)'=='Release' AND '$(BuildTools)'=='1'">
     <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
