@@ -61,7 +61,7 @@ namespace Skybrud.VideoPicker.Skyfish {
             SkyfishVideo video = api.GetVideo(int.Parse(o.VideoId));
 
             // As thumbnail URLs received from the Skyfish API expire over time, we need to create our own solution to handle thumbnails URLs
-            VideoThumbnail[] thumbnails = GetThumbnails(video, config, credentials);
+            VideoThumbnail[] thumbnails = GetThumbnails(video);
 
             VideoProviderDetails provider = new VideoProviderDetails(Alias, Name);
 
@@ -98,15 +98,20 @@ namespace Skybrud.VideoPicker.Skyfish {
             return videoName != null && Regex.IsMatch(videoName, "^([0-9_]+)$");
         }
 
-        internal VideoThumbnail[] GetThumbnails(SkyfishVideo video, SkyfishConfig config, SkyfishCredentials credentials) {
+        internal VideoThumbnail[] GetThumbnails(SkyfishVideo video) {
 
             List<VideoThumbnail> thumbnails = new List<VideoThumbnail>();
 
-            if (video.ThumbnailUrl.HasValue()) thumbnails.Add(new VideoThumbnail(0, 0, video.ThumbnailUrl));
-            if (video.ThumbnailUrlSsl.HasValue()) thumbnails.Add(new VideoThumbnail(0, 0, video.ThumbnailUrlSsl));
+            thumbnails.Add(GetThumbnail(video));
 
             return thumbnails.ToArray();
 
+        }
+
+        private VideoThumbnail GetThumbnail(SkyfishVideo video) {
+            string url = $"/umbraco/api/Skyfish/GetThumbnail?videoId={video.VideoId}";
+
+            return new VideoThumbnail(0, 0, url);
         }
 
     }

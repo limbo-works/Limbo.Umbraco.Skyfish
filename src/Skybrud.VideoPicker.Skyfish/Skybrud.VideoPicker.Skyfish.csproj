@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.0-beta001</Version>
+    <Version>1.0.0-beta002</Version>
     <Company>Limbo</Company>
     <Product>Skybrud.VideoPicker</Product>
     <Authors>Jesper Mayntzhusen</Authors>
@@ -29,7 +29,7 @@
 
   <!-- Include NuGet dependencies -->
   <ItemGroup>
-    <PackageReference Include="Limbo.Integrations.Skyfish" Version="1.0.0-beta001" />
+    <PackageReference Include="Limbo.Integrations.Skyfish" Version="1.0.0-beta002" />
     <PackageReference Include="Skybrud.VideoPicker" Version="2.0.0-alpha006">
       <ExcludeAssets>contentFiles</ExcludeAssets>
     </PackageReference>
