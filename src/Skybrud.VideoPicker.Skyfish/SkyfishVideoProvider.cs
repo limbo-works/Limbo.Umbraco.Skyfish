@@ -3,10 +3,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Limbo.Integrations.Skyfish;
-using Limbo.Integrations.Skyfish.Models;
+using Limbo.Integrations.Skyfish.Models.Media;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Essentials.Strings.Extensions;
 using Skybrud.VideoPicker.Exceptions;
 using Skybrud.VideoPicker.Models;
 using Skybrud.VideoPicker.Models.Config;
@@ -57,15 +56,17 @@ namespace Skybrud.VideoPicker.Skyfish {
 
             // Initialize a new service for the Skyfish API
             SkyfishHttpService api = SkyfishHttpService.CreateFromKeys(credentials.PublicKey, credentials.SecretKey, credentials.Username, credentials.Password);
+            SkyfishHttpHelper skyHelper = new SkyfishHttpHelper(api);
 
-            SkyfishVideo video = api.GetVideo(int.Parse(o.VideoId));
+            SkyfishMediaItem video = skyHelper.GetVideoByMediaId(int.Parse(o.VideoId));
+            string embedUrl = skyHelper.GetEmbedUrlByUniqueMediaId(video.UniqueMediaId);
 
             // As thumbnail URLs received from the Skyfish API expire over time, we need to create our own solution to handle thumbnails URLs
             VideoThumbnail[] thumbnails = GetThumbnails(video);
 
             VideoProviderDetails provider = new VideoProviderDetails(Alias, Name);
 
-            SkyfishVideoDetails details = new SkyfishVideoDetails(video, thumbnails);
+            SkyfishVideoDetails details = new SkyfishVideoDetails(video, thumbnails, embedUrl);
 
             SkyfishEmbedOptions embed = new SkyfishEmbedOptions(details);
 
@@ -98,7 +99,7 @@ namespace Skybrud.VideoPicker.Skyfish {
             return videoName != null && Regex.IsMatch(videoName, "^([0-9_]+)$");
         }
 
-        internal VideoThumbnail[] GetThumbnails(SkyfishVideo video) {
+        internal VideoThumbnail[] GetThumbnails(SkyfishMediaItem video) {
 
             List<VideoThumbnail> thumbnails = new List<VideoThumbnail>();
 
@@ -108,8 +109,8 @@ namespace Skybrud.VideoPicker.Skyfish {
 
         }
 
-        private VideoThumbnail GetThumbnail(SkyfishVideo video) {
-            string url = $"/umbraco/api/Skyfish/GetThumbnail?videoId={video.VideoId}";
+        private VideoThumbnail GetThumbnail(SkyfishMediaItem video) {
+            string url = $"/umbraco/api/Skyfish/GetThumbnail?uniqueMediaId={video.UniqueMediaId}";
 
             return new VideoThumbnail(0, 0, url);
         }

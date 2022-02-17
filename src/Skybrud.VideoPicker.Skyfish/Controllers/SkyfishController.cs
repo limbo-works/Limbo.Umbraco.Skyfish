@@ -19,7 +19,7 @@ namespace Skybrud.VideoPicker.Skyfish.Controllers {
         }
 
         [Route("umbraco/api/skyfish/GetThumbnail")]
-        public object GetThumbnail(string videoId) {
+        public object GetThumbnail(string uniqueMediaId) {
 
             if (!_videoPickerService.Providers.TryGet(out SkyfishVideoProvider provider)) return Request.CreateResponse(HttpStatusCode.NotFound);
             if (!_videoPickerService.Config.TryGetConfig(provider, out SkyfishConfig config)) return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -31,8 +31,9 @@ namespace Skybrud.VideoPicker.Skyfish.Controllers {
 
             // Initialize a new service for the Skyfish API
             SkyfishHttpService api = SkyfishHttpService.CreateFromKeys(credentials.PublicKey, credentials.SecretKey, credentials.Username, credentials.Password);
+            SkyfishHttpHelper skyHelper = new SkyfishHttpHelper(api);
 
-            var thumbnailUrl = api.GetThumbnailUrl(int.Parse(videoId));
+            var thumbnailUrl = skyHelper.GetVideoByUniqueMediaId(int.Parse(uniqueMediaId)).ThumbnailUrl;
 
             if (!string.IsNullOrWhiteSpace(thumbnailUrl)) return Redirect(thumbnailUrl);
             return Request.CreateResponse(HttpStatusCode.NotFound);

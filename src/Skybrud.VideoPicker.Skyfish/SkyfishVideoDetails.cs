@@ -1,4 +1,4 @@
-﻿using Limbo.Integrations.Skyfish.Models;
+﻿using Limbo.Integrations.Skyfish.Models.Media;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
@@ -29,11 +29,11 @@ namespace Skybrud.VideoPicker.Skyfish {
 
         #region Constructors
 
-        public SkyfishVideoDetails(SkyfishVideo video, VideoThumbnail[] thumbnails) {
-            Id = video.VideoId.ToString();
-            Title = string.IsNullOrWhiteSpace(video.VideoTitle) ? video.FileName : video.VideoTitle;
-            Description = video.VideoDescription;
-            EmbedUrl = video.EmbedUrl;
+        public SkyfishVideoDetails(SkyfishMediaItem video, VideoThumbnail[] thumbnails, string embedUrl) {
+            Id = video.UniqueMediaId.ToString();
+            Title = string.IsNullOrWhiteSpace(video.Title) ? video.FileName : video.Title;
+            Description = video.Description;
+            EmbedUrl = embedUrl;
             Thumbnails = thumbnails;
         }
 
