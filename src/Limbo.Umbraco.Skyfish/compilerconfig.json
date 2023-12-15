@@ -1,0 +1,13 @@
+﻿[
+  {
+    "outputFile": "App_Plugins/Skybrud.VideoPicker.Skyfish/Styles/Default.css",
+    "inputFile": "App_Plugins/Skybrud.VideoPicker.Skyfish/Styles/Default.less",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "wwwroot/Styles/Styles.css",
+    "inputFile": "wwwroot/Styles/Styles.less"
+  }
+]

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<language alias="en" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+  <area alias="limboSkyfish">
+    <key alias="video">Video</key>
+    <key alias="refresh">Refresh current video</key>
+    <key alias="url">URL</key>
+    <key alias="urlPlaceholder">Enter the URL of the video here...</key>
+    <key alias="appUrlTooltip">Go to Skyfish Drive</key>
+  </area>
+  <area alias="limboSkyfish">
+    <key alias="errorGeneric">An error occured on the server.</key>
+    <key alias="errorNoSourceSpecified">No URL specified.</key>
+    <key alias="errorInvalidSourceSpecified">The specified URL is not valid.</key>
+    <key alias="errorNotConfigured">No credentials configured for Skyfish.</key>
+    <key alias="errorVideoNotFoundFromUrl">A video with the specified URL could not be found.</key>
+    <key alias="errorFailedGettingEmbedUrl">Failed determining the embed URL of the specified video.</key>
+  </area>
+</language>

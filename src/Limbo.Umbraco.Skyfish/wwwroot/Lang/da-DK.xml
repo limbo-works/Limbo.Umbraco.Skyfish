@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<language alias="da" intName="Danish" localName="dansk" lcid="6" culture="da-DK">
+  <area alias="limboSkyfish">
+    <key alias="video">Video</key>
+    <key alias="refresh">Genindlæs den valgte video</key>
+    <key alias="title">Titel</key>
+    <key alias="duration">Længde</key>
+    <key alias="url">URL</key>
+    <key alias="urlPlaceholder">Angiv videoens URL her...</key>
+    <key alias="appUrlTooltip">Gå til Skyfish Drive</key>
+  </area>
+  <area alias="limboSkyfish">
+    <key alias="errorGeneric">Der skete en fejl på serveren.</key>
+    <key alias="errorNoSourceSpecified">Ingen URL angivet.</key>
+    <key alias="errorInvalidSourceSpecified">Den angivne URL er ikke gyldig.</key>
+    <key alias="errorNotConfigured">Skyfish er ikke konfigureret.</key>
+    <key alias="errorVideoNotFoundFromUrl">En video med den angivne URL blev ikke fundet.</key>
+    <key alias="errorFailedGettingEmbedUrl">Det var ikke muligt at generere en embed-URL for den angivne video. Bemærk at ved store video-filer kan denne process tage lang tid - i så fald kan du prøve igen senere.</key>
+  </area>
+</language>
