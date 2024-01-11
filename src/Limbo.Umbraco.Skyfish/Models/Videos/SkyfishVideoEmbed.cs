@@ -81,7 +81,7 @@ public class SkyfishVideoEmbed : IVideoEmbed {
         iframe.Attributes.Add("width", width.ToString());
         iframe.Attributes.Add("height", height.ToString());
 
-        //iframe.Attributes.Add(RequireConsent ? "consent-src" : "src", embedUrl);
+        iframe.Attributes.Add("src", Url);
 
         var allowString = "accelerometer; encrypted-media; gyroscope; picture-in-picture";
 
