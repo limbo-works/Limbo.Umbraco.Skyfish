@@ -27,7 +27,9 @@ namespace Limbo.Umbraco.Skyfish {
         /// <summary>
         /// Gets the informational version of the package.
         /// </summary>
-        public static readonly string InformationalVersion = ReflectionUtils.GetInformationalVersion(typeof(SkyfishPackage));
+        public static readonly string InformationalVersion = ReflectionUtils
+            .GetInformationalVersion(typeof(SkyfishPackage))
+            .Split('+')[0];
 
         /// <summary>
         /// Gets the semantic version of the package.
