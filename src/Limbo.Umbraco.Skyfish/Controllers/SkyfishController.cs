@@ -17,6 +17,7 @@ public class SkyfishController : UmbracoApiController {
         _skyfishService = skyfishService;
     }
 
+    [HttpGet]
     [Route("api/skyfish/{uniqueMediaId}/thumbnail")]
     [Route("umbraco/api/Skyfish/GetThumbnail")]
     public object GetThumbnail(string uniqueMediaId) {
