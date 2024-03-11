@@ -11,6 +11,10 @@ namespace Limbo.Umbraco.Skyfish.PropertyEditors {
         [JsonProperty("hideLabel")]
         public bool HideLabel { get; set; }
 
+        [ConfigurationField("removeJavaScript", "Remove JavaScript", "boolean", Description = "The default embed code contains a bit of JavaScript, which is not ideal in all cases. Enable this setting to remove the JavaScript from the embed code.")]
+        [JsonProperty("removeJavaScript")]
+        public bool RemoveJavaScript { get; set; }
+
     }
 
 }

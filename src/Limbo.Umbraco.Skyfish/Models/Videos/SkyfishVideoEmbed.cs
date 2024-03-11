@@ -17,6 +17,7 @@ namespace Limbo.Umbraco.Skyfish.Models.Videos;
 public class SkyfishVideoEmbed : IVideoEmbed {
 
     private readonly SkyfishVideoDetails _details;
+    private readonly SkyfishConfiguration? _configuration;
 
     #region Properties
 
@@ -45,6 +46,7 @@ public class SkyfishVideoEmbed : IVideoEmbed {
 
     internal SkyfishVideoEmbed(JObject json, SkyfishVideoDetails details, SkyfishConfiguration? configuration) {
         _details = details ?? throw new ArgumentNullException(nameof(details));
+        _configuration = configuration;
         Url = json.GetString("url")!;
         Autoplay = false;
         Html = GetHtml();
@@ -94,7 +96,9 @@ public class SkyfishVideoEmbed : IVideoEmbed {
         iframe.Attributes.Add("mozallowfullscreen", string.Empty);
 
         // All iFrame attributes are taken from https://player.skyfish.com/iframe.json
-        iframe.Attributes.Add("onLoad", "!function(e){try{e.style.maxWidth='100%';var n=e.width/e.height;if(0<n){var t,d;(t=function(){var t,i=e.getBoundingClientRect();t=i.width<e.width?(i.width/n).toFixed(0)+'px':'none',d!==t&&(e.style.maxHeight=d=t)})(),window.addEventListener('resize',t)}}catch(t){console.log(t)}}(this)");
+        if (_configuration is null || !_configuration.RemoveJavaScript) {
+            iframe.Attributes.Add("onLoad", "!function(e){try{e.style.maxWidth='100%';var n=e.width/e.height;if(0<n){var t,d;(t=function(){var t,i=e.getBoundingClientRect();t=i.width<e.width?(i.width/n).toFixed(0)+'px':'none',d!==t&&(e.style.maxHeight=d=t)})(),window.addEventListener('resize',t)}}catch(t){console.log(t)}}(this)");
+        }
 
         if (string.IsNullOrWhiteSpace(_details.Title) == false) iframe.Attributes.Add("title", _details.Title);
 
