@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
 using Limbo.Integrations.Skyfish;
 using Limbo.Integrations.Skyfish.Models.Media;
 using Limbo.Umbraco.Skyfish.Models.Settings;
@@ -48,6 +49,8 @@ public class SkyfishService {
         options = null;
         if (string.IsNullOrWhiteSpace(source)) return false;
 
+        source = source.Trim();
+
         if (RegexUtils.IsMatch(source, "^https://app.skyfish.com/folder/([0-9]+)/file/([0-9]+)$", out Match match)) {
             options = new SkyfishVideoOptions(null, match.Groups[2].Value.ToInt32());
             return true;
@@ -56,6 +59,21 @@ public class SkyfishService {
         if (RegexUtils.IsMatch(source, "^https://www.skyfish.com/sh/([a-z0-9]+)/([a-z0-9]+)/([0-9]+)/([0-9]+)$", out match)) {
             options = new SkyfishVideoOptions(match.Groups[4].Value.ToInt32(), null);
             return true;
+        }
+
+        if (RegexUtils.IsMatch(source, "^<iframe src=\"(.+?)\"", out match)) {
+            try {
+                match.Groups[1].Value.Split('?', out string _, out string? query);
+                if (!string.IsNullOrWhiteSpace(query)) {
+                    var q = HttpUtility.ParseQueryString(query);
+                    if (int.TryParse(q["media"], out int uniqueMediaId)) {
+                        options = new SkyfishVideoOptions(null, uniqueMediaId);
+                        return true;
+                    }
+                }
+            } catch {
+                // ignore
+            }
         }
 
         return false;
