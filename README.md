@@ -38,18 +38,18 @@
 
 **Umbraco 10+**  
 
-Version 1 of this package supports Umbraco version 10, 11, and 12. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish/1.0.0-beta003).
+Version 1 of this package supports Umbraco version 10, 11, and 12. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish/1.0.0-beta004).
 
 To install the package, you can use either the .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Skyfish --version 1.0.0-beta003
+dotnet add package Limbo.Umbraco.Skyfish --version 1.0.0-beta004
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Skyfish -Version 1.0.0-beta003
+Install-Package Limbo.Umbraco.Skyfish -Version 1.0.0-beta004
 ```
 
 
