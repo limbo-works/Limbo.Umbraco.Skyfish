@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Limbo.Integrations.Skyfish;
 using Limbo.Integrations.Skyfish.Models.Media;
@@ -67,6 +68,15 @@ public class SkyfishService {
     /// <returns>A collection of <see cref="SkyfishCredentials"/>.</returns>
     public IEnumerable<SkyfishCredentials> GetCredentials() {
         return _settings.Value.Credentials;
+    }
+
+    /// <summary>
+    /// Returns the credentials with the specified <paramref name="key"/>, or <see langword="null"/> if not found.
+    /// </summary>
+    /// <param name="key">The GUID key of the credentials.</param>
+    /// <returns>An instance of <see cref="SkyfishCredentials"/> if successful; otherwise, <see langword="null"/>.</returns>
+    public SkyfishCredentials? GetCredentialsByKey(Guid key) {
+        return _settings.Value.Credentials.FirstOrDefault(x => x.Key == key);
     }
 
     /// <summary>
