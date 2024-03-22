@@ -28,6 +28,7 @@ using Umbraco.Extensions;
 
 namespace Limbo.Umbraco.Skyfish.Controllers;
 
+[ApiExplorerSettings(IgnoreApi = true)]
 public class SkyfishAuthorizedController : UmbracoAuthorizedApiController {
 
     private readonly ILogger<SkyfishAuthorizedController> _logger;
