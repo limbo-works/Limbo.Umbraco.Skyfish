@@ -52,7 +52,7 @@ public class SkyfishService {
             return true;
         }
 
-        if (RegexUtils.IsMatch(source, "^https://www.skyfish.com/sh/([a-z0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)$", out match)) {
+        if (RegexUtils.IsMatch(source, "^https://www.skyfish.com/sh/([a-z0-9]+)/([a-z0-9]+)/([0-9]+)/([0-9]+)$", out match)) {
             options = new SkyfishVideoOptions(match.Groups[4].Value.ToInt32(), null);
             return true;
         }
