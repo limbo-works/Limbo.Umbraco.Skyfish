@@ -113,8 +113,14 @@ public class SkyfishAuthorizedController : UmbracoAuthorizedApiController {
         }
 
         // Get the embed URL of the video
-        string? embedUrl = skyHelper.GetEmbedUrl(media.UniqueMediaId, 120, TimeSpan.FromSeconds(1));
-        if (string.IsNullOrWhiteSpace(embedUrl)) return FailedGettingEmbedUrl();
+        string? embedUrl;
+        try {
+            embedUrl = skyHelper.GetEmbedUrl(media.UniqueMediaId, 120, TimeSpan.FromSeconds(1));
+            if (string.IsNullOrWhiteSpace(embedUrl)) return FailedGettingEmbedUrl();
+        } catch (Exception ex) {
+            _logger.LogError(ex, "Failed getting stream URL from the Skyfish API from specified source '{Source}'.", source);
+            return GenericError();
+        }
 
         // As thumbnail URLs received from the Skyfish API expire over time, we need to create our own solution to handle thumbnails URLs
         IReadOnlyList<VideoThumbnail> thumbnails = _skyfishService.GetThumbnails(media);
