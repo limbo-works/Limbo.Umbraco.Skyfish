@@ -18,13 +18,13 @@ public class SkyfishEditor : DataEditor {
 
     #region Constants
 
-    internal const string EditorAlias = "Limbo.Umbraco.Skyfish";
+    public const string EditorAlias = "Limbo.Umbraco.Skyfish";
 
-    internal const string EditorName = "Limbo Skyfish Video";
+    public const string EditorName = "Limbo Skyfish Video";
 
-    internal const string EditorView = "/App_Plugins/Limbo.Umbraco.Skyfish/Views/Video.html";
+    public const string EditorView = "/App_Plugins/Limbo.Umbraco.Skyfish/Views/Video.html";
 
-    internal const string EditorIcon = "icon-limbo-skyfish-alt color-limbo";
+    public const string EditorIcon = "icon-limbo-skyfish-alt color-limbo";
 
     #endregion
 
