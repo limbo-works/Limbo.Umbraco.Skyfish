@@ -8,7 +8,7 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 namespace Limbo.Umbraco.Skyfish.Models.Videos; 
 
 /// <summary>
-/// Class representing the value returned by the <see cref="SkyfishEditor"/> property editor.
+/// Class representing the value returned by the <see cref="SkyfishVideoEditor"/> property editor.
 /// </summary>
 public class SkyfishVideoValue : IVideoValue {
 
@@ -79,7 +79,7 @@ public class SkyfishVideoValue : IVideoValue {
     /// <param name="json">The JSOn object representing the video value.</param>
     /// <param name="config">The configuration of the TwentyThree data type.</param>
     /// <returns>An instance of <see cref="SkyfishVideoValue"/>.</returns>
-    public static SkyfishVideoValue Create(JObject json, SkyfishConfiguration? config) {
+    public static SkyfishVideoValue Create(JObject json, SkyfishVideoConfiguration? config) {
         var details = json.GetObject("details", SkyfishVideoDetails.Parse)!;
         var embed = json.GetObject("embed", x => new SkyfishVideoEmbed(x, details, config))!;
         return new SkyfishVideoValue(json, details, embed);

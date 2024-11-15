@@ -17,7 +17,7 @@ namespace Limbo.Umbraco.Skyfish.Models.Videos;
 public class SkyfishVideoEmbed : IVideoEmbed {
 
     private readonly SkyfishVideoDetails _details;
-    private readonly SkyfishConfiguration? _configuration;
+    private readonly SkyfishVideoConfiguration? _configuration;
 
     #region Properties
 
@@ -44,7 +44,7 @@ public class SkyfishVideoEmbed : IVideoEmbed {
 
     #region Constructors
 
-    internal SkyfishVideoEmbed(JObject json, SkyfishVideoDetails details, SkyfishConfiguration? configuration) {
+    internal SkyfishVideoEmbed(JObject json, SkyfishVideoDetails details, SkyfishVideoConfiguration? configuration) {
         _details = details ?? throw new ArgumentNullException(nameof(details));
         _configuration = configuration;
         Url = json.GetString("url")!;
