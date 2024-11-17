@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Limbo.Umbraco.Skyfish.Models.Api;
+#pragma warning disable CS1591
 
-internal class SkyfishIntermediaryVideoEmbed {
+namespace Limbo.Umbraco.Skyfish.Models.Videos.Intermediary;
+
+public class SkyfishIntermediaryVideoEmbed {
 
     [JsonProperty("url")]
     public string Url { get; }

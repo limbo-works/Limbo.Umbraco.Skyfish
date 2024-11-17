@@ -8,6 +8,7 @@ using Limbo.Integrations.Skyfish.Models.Media;
 using Limbo.Integrations.Skyfish.Options.Search;
 using Limbo.Integrations.Skyfish.Responses.Media;
 using Limbo.Integrations.Skyfish.Responses.Search;
+using Limbo.Umbraco.Skyfish.Exceptions;
 using Limbo.Umbraco.Skyfish.Models.Api;
 using Limbo.Umbraco.Skyfish.Models.Settings;
 using Limbo.Umbraco.Skyfish.Options;
@@ -16,7 +17,6 @@ using Limbo.Umbraco.Video.Models.Videos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Strings;
 using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.Security;
@@ -64,82 +64,41 @@ public class SkyfishAuthorizedController : UmbracoAuthorizedApiController {
 
         if (string.IsNullOrWhiteSpace(source)) return NoSourceSpecified();
 
-        // Try to get the Skyfish media ID from "source"
-        if (!_skyfishService.TryParseSource(source, out SkyfishVideoOptions? options)) return InvalidSourceSpecified();
 
-        // Get the first set of configured credentials (we don't currently support more than one)
-        SkyfishCredentials? credentials = _skyfishService.GetCredentials().FirstOrDefault();
-        if (credentials == null || !_skyfishService.TryGetHttpService(credentials, out SkyfishHttpService? http)) return NotConfigured();
 
-        // Initialize a new helper instance
-        SkyfishHttpHelper skyHelper = new(http);
-
-        // Search for the video in the via the Search API
-        SkyfishMediaItem? media;
         try {
 
-            // Make the request to the API
-            SkyfishSearchResponse response = http.Search.Search(new SkyfishSearchOptions {
-                MediaId = options.MediaId ?? 0,
-                UniqueMediaId = options.UniqueMediaId ?? 0
-            });
+            return _skyfishService.GetIntermediaryVideoValue(source);
 
-            // Get the first media of the response (if asny)
-            media = response.Body.Media.FirstOrDefault();
-            if (media is null) return VideoNotFoundFromUrl();
+        } catch (SkyfishInvalidSourceException ex) {
 
-            // TODO: Should we validate the media type to exclude non-video media types?
+            _logger.LogError(ex, "Invalid source specified: {Source}", source);
+
+            return InvalidSourceSpecified();
+
+        } catch (SkyfishNotConfiguredException ex) {
+
+            _logger.LogError(ex, "The Skyfish package has not been configured.");
+
+            return NotConfigured();
+
+        } catch (SkyfishVideoNotFoundException) {
+
+            return VideoNotFoundFromUrl();
+
+        } catch (SkyfishEmbedUrlTimeoutException ex) {
+
+            _logger.LogError(ex, "Failed getting embed code for video: {Source}", source);
+
+            return FailedGettingEmbedUrl();
 
         } catch (Exception ex) {
 
-            _logger.LogError(ex, "Failed getting media from the Skyfish API from specified source '{Source}'.", source);
+            _logger.LogError(ex, "Failed getting Skyfish video information: {Source}", source);
 
             return GenericError();
 
         }
-
-        // Get the duration of the video, if available
-        TimeSpan? duration = null;
-        try {
-            SkyfishMediaTagsResponse response = http.Media.GetTags(media.UniqueMediaId);
-            if (response.Body.QuickTime is not null && response.Body.QuickTime.TryGetValue("Duration", out object? durationValue)) {
-                if (durationValue is string durationStr && StringUtils.TryParseDouble(durationStr, out double durationResult)) {
-                    duration = TimeSpan.FromSeconds(durationResult);
-                }
-            }
-        } catch (Exception ex) {
-            _logger.LogError(ex, "Failed getting media tags from the Skyfish API from specified source '{Source}'.", source);
-            return GenericError();
-        }
-
-        // Get the embed URL of the video
-        string? embedUrl;
-        try {
-            embedUrl = skyHelper.GetEmbedUrl(media.UniqueMediaId, 120, TimeSpan.FromSeconds(1));
-            if (string.IsNullOrWhiteSpace(embedUrl)) return FailedGettingEmbedUrl();
-        } catch (Exception ex) {
-            _logger.LogError(ex, "Failed getting stream URL from the Skyfish API from specified source '{Source}'.", source);
-            return GenericError();
-        }
-
-        // As thumbnail URLs received from the Skyfish API expire over time, we need to create our own solution to handle thumbnails URLs
-        IReadOnlyList<VideoThumbnail> thumbnails = _skyfishService.GetThumbnails(media);
-
-        // Initialize the intermediary details for the video
-        SkyfishIntermediaryVideoDetails details = new(media, duration, thumbnails);
-
-        // Initialize the intermediary embed information for the video
-        SkyfishIntermediaryVideoEmbed embed = new(embedUrl);
-
-        JObject json = JObject.FromObject(new {
-            credentials = new {
-                key = credentials.Key
-            },
-            details,
-            embed
-        });
-
-        return json;
 
     }
 

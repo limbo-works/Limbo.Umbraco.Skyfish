@@ -5,9 +5,11 @@ using Limbo.Umbraco.Video.Models.Videos;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 
-namespace Limbo.Umbraco.Skyfish.Models.Api;
+namespace Limbo.Umbraco.Skyfish.Models.Videos.Intermediary;
 
-internal class SkyfishIntermediaryVideoDetails {
+#pragma warning disable CS1591
+
+public class SkyfishIntermediaryVideoDetails {
 
     [JsonProperty("mediaId")]
     public int MediaId { get; }
