@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Reflection;
 using Umbraco.Cms.Core.Semver;
 
-namespace Limbo.Umbraco.Skyfish; 
+namespace Limbo.Umbraco.Skyfish;
 
 /// <summary>
 /// Static class with various information and constants about the package.
