@@ -6,7 +6,7 @@ using Umbraco.Cms.Web.Common.DependencyInjection;
 namespace Limbo.Umbraco.Skyfish;
 
 /// <summary>
-/// Static class with various utility methods for Dream Broker implementation.
+/// Static class with various utility methods for Skyfish implementation.
 /// </summary>
 public static class SkyfishUtils {
 
@@ -15,7 +15,7 @@ public static class SkyfishUtils {
     /// </summary>
     /// <param name="source">The source (URL) as entered by the user.</param>
     /// <returns>An instance of <see cref="SkyfishIntermediaryVideoValue"/> representing the video.</returns>
-    public static SkyfishIntermediaryVideoValue GetDreamBrokerVideoValue(string source) {
+    public static SkyfishIntermediaryVideoValue GetIntermedidryVideoValue(string source) {
         return StaticServiceProvider.Instance
             .GetRequiredService<SkyfishService>()
             .GetIntermediaryVideoValue(source);
