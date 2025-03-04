@@ -8,7 +8,7 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 namespace Limbo.Umbraco.Skyfish.Models.Videos;
 
 /// <summary>
-/// Class representing the value returned by the <see cref="SkyfishVideoEditor"/> property editor.
+/// Class representing the value returned by the <see cref="SkyfishVideoPropertyEditor"/> property editor.
 /// </summary>
 public class SkyfishVideoValue : IVideoValue {
 

@@ -49,7 +49,7 @@ public class SkyfishPackage {
     /// <summary>
     /// Gets the URL of the documentation for this package.
     /// </summary>
-    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.skyfish/v10/docs/";
+    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.skyfish/v13/docs/";
 
 
 }

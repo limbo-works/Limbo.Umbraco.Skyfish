@@ -1,7 +1,7 @@
 ﻿using Limbo.Umbraco.Skyfish.Models.Videos.Intermediary;
 using Limbo.Umbraco.Skyfish.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Umbraco.Cms.Web.Common.DependencyInjection;
+using Umbraco.Cms.Core.DependencyInjection;
 
 namespace Limbo.Umbraco.Skyfish;
 

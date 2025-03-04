@@ -11,7 +11,7 @@ namespace Limbo.Umbraco.Skyfish.PropertyEditors;
 /// Represents a block list property editor.
 /// </summary>
 [DataEditor(EditorAlias, EditorName, EditorView, ValueType = ValueTypes.Json, Group = "Limbo", Icon = EditorIcon)]
-public class SkyfishVideoEditor : DataEditor {
+public class SkyfishVideoPropertyEditor : DataEditor {
 
     private readonly IIOHelper _ioHelper;
     private readonly IEditorConfigurationParser _editorConfigurationParser;
@@ -30,7 +30,7 @@ public class SkyfishVideoEditor : DataEditor {
 
     #region Constructors
 
-    public SkyfishVideoEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser, IDataValueEditorFactory dataValueEditorFactory) : base(dataValueEditorFactory) {
+    public SkyfishVideoPropertyEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser, IDataValueEditorFactory dataValueEditorFactory) : base(dataValueEditorFactory) {
         _ioHelper = ioHelper;
         _editorConfigurationParser = editorConfigurationParser;
     }

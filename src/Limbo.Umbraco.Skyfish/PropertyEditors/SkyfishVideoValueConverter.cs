@@ -11,12 +11,12 @@ using Umbraco.Extensions;
 namespace Limbo.Umbraco.Skyfish.PropertyEditors;
 
 /// <summary>
-/// Property value converter for <see cref="SkyfishVideoEditor"/>.
+/// Property value converter for <see cref="SkyfishVideoPropertyEditor"/>.
 /// </summary>
 public class SkyfishVideoValueConverter : PropertyValueConverterBase {
 
     public override bool IsConverter(IPublishedPropertyType propertyType) {
-        return propertyType.EditorAlias == SkyfishVideoEditor.EditorAlias;
+        return propertyType.EditorAlias == SkyfishVideoPropertyEditor.EditorAlias;
     }
 
     public override object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview) {
