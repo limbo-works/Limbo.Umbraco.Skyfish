@@ -6,9 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
 namespace Limbo.Umbraco.Skyfish.Composers;
 
-internal class SkyfishComposer : IComposer {
+public class SkyfishComposer : IComposer {
 
     public void Compose(IUmbracoBuilder builder) {
 

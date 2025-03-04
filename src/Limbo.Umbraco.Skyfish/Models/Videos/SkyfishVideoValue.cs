@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
-namespace Limbo.Umbraco.Skyfish.Models.Videos; 
+namespace Limbo.Umbraco.Skyfish.Models.Videos;
 
 /// <summary>
 /// Class representing the value returned by the <see cref="SkyfishVideoEditor"/> property editor.

@@ -142,7 +142,7 @@ public class SkyfishService {
     /// endpoint.
     /// </remarks>
     public IReadOnlyList<VideoThumbnail> GetThumbnails(SkyfishMediaItem video) {
-        List<VideoThumbnail> thumbnails = new() { GetThumbnail(video) };
+        List<VideoThumbnail> thumbnails = [GetThumbnail(video)];
         return thumbnails;
     }
 

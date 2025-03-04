@@ -16,13 +16,13 @@ public class SkyfishManifestFilter : IManifestFilter {
             PackageName = SkyfishPackage.Name,
             Version = SkyfishPackage.InformationalVersion,
             BundleOptions = BundleOptions.Independent,
-            Scripts = new[] {
+            Scripts = [
                 $"/App_Plugins/{SkyfishPackage.Alias}/Scripts/Services/SkyfishService.js",
                 $"/App_Plugins/{SkyfishPackage.Alias}/Scripts/Controllers/Video.js"
-            },
-            Stylesheets = new[] {
+            ],
+            Stylesheets = [
                 $"/App_Plugins/{SkyfishPackage.Alias}/Styles/Styles.css"
-            }
+            ]
         };
 
         // The "PackageId" property isn't available prior to Umbraco 12, and since the package is build against

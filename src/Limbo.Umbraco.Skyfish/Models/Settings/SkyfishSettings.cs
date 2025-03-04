@@ -14,7 +14,7 @@ public class SkyfishSettings {
     /// <summary>
     /// Gets an array with the configured credentials for this provider.
     /// </summary>
-    public List<SkyfishCredentials> Credentials { get; internal set; } = new();
+    public List<SkyfishCredentials> Credentials { get; internal set; } = [];
 
     #endregion
 

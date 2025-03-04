@@ -89,7 +89,7 @@ public class SkyfishVideoDetails : IVideoDetails {
         Height = data.GetInt32("height");
         Duration = data.GetDouble("duration", TimeSpan.FromSeconds);
         Thumbnails = data.GetArrayItems("thumbnails", x => (IVideoThumbnail) VideoThumbnail.Parse(x)!);
-        Files = Array.Empty<IVideoFile>();
+        Files = [];
 
     }
 
