@@ -1,6 +1,6 @@
 ﻿# Limbo Skyfish
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v1/main/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v13/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.Skyfish.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.Skyfish.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish)
 [![Limbo.Umbraco.Skyfish at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/limbo.umbraco.skyfish/)
@@ -11,18 +11,18 @@
 <table>
   <tr>
     <td><strong>License:</strong></td>
-    <td><a href="https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v1/main/LICENSE.md"><strong>MIT License</strong></a></td>
+    <td><a href="https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v13/main/LICENSE.md"><strong>MIT License</strong></a></td>
   </tr>
   <tr>
     <td><strong>Umbraco:</strong></td>
     <td>
-      Umbraco 10, 11 and 12
+      Umbraco 13
     </td>
   </tr>
   <tr>
     <td><strong>Target Framework:</strong></td>
     <td>
-      .NET 6
+      .NET 8
     </td>
   </tr>
 </table>
@@ -36,21 +36,25 @@
 
 ## Installation
 
-**Umbraco 10+**  
+### Umbraco 13
 
-Version 1 of this package supports Umbraco version 10, 11, and 12. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish/1.0.0-beta005).
+Version 13 of this package supports Umbraco version 13. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish/13.0.0).
 
 To install the package, you can use either the .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Skyfish --version 1.0.0-beta005
+dotnet add package Limbo.Umbraco.Skyfish --version 13.0.0
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Skyfish -Version 1.0.0-beta005
+Install-Package Limbo.Umbraco.Skyfish -Version 13.0.0
 ```
+
+### Umbraco 10-12
+
+- See the [**`v10/main`**](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/tree/v13/main) branch.
 
 
 
