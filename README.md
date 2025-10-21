@@ -38,18 +38,18 @@
 
 ### Umbraco 13
 
-Version 13 of this package supports Umbraco version 13. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish/13.0.0).
+Version 13 of this package supports Umbraco version 13. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish).
 
 To install the package, you can use either the .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Skyfish --version 13.0.0
+dotnet add package Limbo.Umbraco.Skyfish --version 13.0.1
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Skyfish -Version 13.0.0
+Install-Package Limbo.Umbraco.Skyfish -Version 13.0.1
 ```
 
 ### Other versions of Umbraco
