@@ -10,6 +10,7 @@ using Limbo.Integrations.Skyfish.Options.Search;
 using Limbo.Integrations.Skyfish.Responses.Media;
 using Limbo.Integrations.Skyfish.Responses.Search;
 using Limbo.Umbraco.Skyfish.Exceptions;
+using Limbo.Umbraco.Skyfish.Models;
 using Limbo.Umbraco.Skyfish.Models.Settings;
 using Limbo.Umbraco.Skyfish.Models.Videos.Intermediary;
 using Limbo.Umbraco.Skyfish.Options;
@@ -49,7 +50,7 @@ public class SkyfishService {
     /// <param name="source">The source.</param>
     /// <param name="options">When this method returns, holds an instance of <see cref="SkyfishVideoOptions"/> if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    public bool TryParseSource(string source, [NotNullWhen(true)] out SkyfishVideoOptions? options) {
+    public virtual bool TryParseSource(string source, [NotNullWhen(true)] out SkyfishVideoOptions? options) {
 
         options = null;
         if (string.IsNullOrWhiteSpace(source)) return false;
@@ -57,22 +58,22 @@ public class SkyfishService {
         source = source.Trim();
 
         if (RegexUtils.IsMatch(source, "^https://app.skyfish.com/folder/([0-9]+)/file/([0-9]+)$", out Match match)) {
-            options = new SkyfishVideoOptions(null, match.Groups[2].Value.ToInt32());
+            options = new SkyfishVideoOptions(source, SkyfishSourceType.AppUrl, null, match.Groups[2].Value.ToInt32());
             return true;
         }
 
-        if (RegexUtils.IsMatch(source, "^https://www.skyfish.com/sh/([a-z0-9]+)/([a-z0-9]+)/([0-9]+)/([0-9]+)$", out match)) {
-            options = new SkyfishVideoOptions(match.Groups[4].Value.ToInt32(), null);
+        if (RegexUtils.IsMatch(source, "^https://(www|share).skyfish.com/sh/([a-z0-9]+)/([a-z0-9]+)/([0-9]+)/([0-9]+)$", out match)) {
+            options = new SkyfishVideoOptions(source, SkyfishSourceType.ShareUrl, match.Groups[5].Value.ToInt32(), null);
             return true;
         }
 
-        if (RegexUtils.IsMatch(source, "^<iframe src=\"(.+?)\"", out match)) {
+        if (RegexUtils.IsMatch(source, "<iframe src=\"(.+?)\"", out match)) {
             try {
                 match.Groups[1].Value.Split('?', out string _, out string? query);
                 if (!string.IsNullOrWhiteSpace(query)) {
                     var q = HttpUtility.ParseQueryString(query);
                     if (int.TryParse(q["media"], out int uniqueMediaId)) {
-                        options = new SkyfishVideoOptions(null, uniqueMediaId);
+                        options = new SkyfishVideoOptions(source, SkyfishSourceType.Embed, null, uniqueMediaId);
                         return true;
                     }
                 }
