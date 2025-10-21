@@ -4,7 +4,7 @@
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.Skyfish.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.Skyfish.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish)
 [![Limbo.Umbraco.Skyfish at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/limbo.umbraco.skyfish/)
-<!--[![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.skyfish)-->
+[![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.skyfish)
 
 **Limbo.Umbraco.Skyfish** is a video picker property editor for the Umbraco backoffice that allows users to insert videos from [**Skyfish**](https://www.skyfish.com/).
 
@@ -52,9 +52,9 @@ or the NuGet Package Manager:
 Install-Package Limbo.Umbraco.Skyfish -Version 13.0.0
 ```
 
-### Umbraco 10-12
+### Other versions of Umbraco
 
-- See the [**`v10/main`**](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/tree/v13/main) branch.
+- ~~[**`v10/main`**](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/tree/v10/main) Umbraco 10, 11 and 12~~ <sub title="Umbraco 10, 11 and 12 have reached end-of-life"><sup>(EOL)</sup></sub>
 
 
 
