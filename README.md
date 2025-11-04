@@ -43,13 +43,13 @@ Version 13 of this package supports Umbraco version 13. The package is only avai
 To install the package, you can use either the .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Skyfish --version 13.0.1
+dotnet add package Limbo.Umbraco.Skyfish --version 13.0.2
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Skyfish -Version 13.0.1
+Install-Package Limbo.Umbraco.Skyfish -Version 13.0.2
 ```
 
 ### Other versions of Umbraco
@@ -91,3 +91,4 @@ In order for the package to access the API, you should add the credentials to th
 `Key` should be a random but unique GUID key that helps identifying the crendetials. The values for `Name` and `Description` are currently not used, but that may change in the future.
 
 With the current implementation, the package will always use the first set of `Credentials`, meaning multiple credentials are not directly supported.
+
