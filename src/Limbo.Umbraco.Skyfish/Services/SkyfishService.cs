@@ -57,7 +57,7 @@ public class SkyfishService {
 
         source = source.Trim();
 
-        if (RegexUtils.IsMatch(source, "^https://app.skyfish.com/folder/([0-9]+)/file/([0-9]+)$", out Match match)) {
+        if (RegexUtils.IsMatch(source, "^https://app.skyfish.com/folder/(root|[0-9]+)/file/([0-9]+)$", out Match match)) {
             options = new SkyfishVideoOptions(source, SkyfishSourceType.AppUrl, null, match.Groups[2].Value.ToInt32());
             return true;
         }
