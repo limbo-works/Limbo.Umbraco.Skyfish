@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Limbo.Integrations.Skyfish.Models.Media;
 using Limbo.Umbraco.Video.Models.Videos;
 using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 
 namespace Limbo.Umbraco.Skyfish.Models.Videos.Intermediary;
 
@@ -42,7 +42,7 @@ public class SkyfishIntermediaryVideoDetails {
     public int Height { get; }
 
     [JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
-    [JsonConverter(typeof(TimeSpanSecondsConverter))]
+    [JsonConverter(typeof(TimeSpanConverter))]
     public TimeSpan? Duration { get; }
 
     [JsonProperty("folderId")]

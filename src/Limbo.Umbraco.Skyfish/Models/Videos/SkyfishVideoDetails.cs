@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Limbo.Umbraco.Video.Models.Videos;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Converters.Time;
-using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Json.Newtonsoft;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Limbo.Umbraco.Skyfish.Models.Videos;
 
@@ -58,20 +58,20 @@ public class SkyfishVideoDetails : IVideoDetails {
     /// Gets the duration of the video.
     /// </summary>
     [JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
-    [JsonConverter(typeof(TimeSpanSecondsConverter))]
+    [JsonConverter(typeof(TimeSpanConverter))]
     public TimeSpan? Duration { get; }
 
     /// <summary>
     /// Gets a list of thumbnails of the video.
     /// </summary>
     [JsonProperty("thumbnails")]
-    public IEnumerable<IVideoThumbnail> Thumbnails { get; }
+    public IReadOnlyList<IVideoThumbnail> Thumbnails { get; }
 
     /// <summary>
     /// Gets an array with the files of the video. This will currently always be empty.
     /// </summary>
     [JsonIgnore]
-    public IEnumerable<IVideoFile> Files { get; }
+    public IReadOnlyList<IVideoFile> Files { get; }
 
     #endregion
 

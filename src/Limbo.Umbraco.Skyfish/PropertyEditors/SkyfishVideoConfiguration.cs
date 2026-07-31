@@ -1,17 +1,25 @@
-﻿using Newtonsoft.Json;
+// [CHANGE: Umbraco 17 upgrade - labels/descriptions now live in the client side settings schema, and "hideLabel" was dropped] Related: wwwroot/EntryPoint.js, PropertyEditors/SkyfishVideoPropertyEditor.cs, PropertyEditors/SkyfishVideoValueConverter.cs
+
+using Newtonsoft.Json;
 using Umbraco.Cms.Core.PropertyEditors;
 
 #pragma warning disable CS1591
 
 namespace Limbo.Umbraco.Skyfish.PropertyEditors;
 
+/// <summary>
+/// Class representing the configuration of the <see cref="SkyfishVideoPropertyEditor"/> property editor.
+/// </summary>
+/// <remarks>
+/// The label and description of each field are declared in the <c>settings</c> part of the property editor schema
+/// registered from <c>EntryPoint.js</c>.
+/// </remarks>
 public class SkyfishVideoConfiguration {
 
-    [ConfigurationField("hideLabel", "Hide label", "boolean", Description = "Select whether the label and description of properties using this data type should be hidden.<br /><br />Hiding the label and description can be useful in some cases - eg. to give the video picker a bit more horizontal space.")]
-    [JsonProperty("hideLabel")]
-    public bool HideLabel { get; set; }
-
-    [ConfigurationField("removeJavaScript", "Remove JavaScript", "boolean", Description = "The default embed code contains a bit of JavaScript, which is not ideal in all cases. Enable this setting to remove the JavaScript from the embed code.")]
+    /// <summary>
+    /// Gets or sets whether the JavaScript part of the default embed code should be removed.
+    /// </summary>
+    [ConfigurationField("removeJavaScript")]
     [JsonProperty("removeJavaScript")]
     public bool RemoveJavaScript { get; set; }
 
