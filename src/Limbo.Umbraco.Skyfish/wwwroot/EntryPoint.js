@@ -7,7 +7,7 @@ import { SkyfishService } from "@limbo/skyfish/service";
 const PACKAGE_ALIAS = "Limbo.Umbraco.Skyfish";
 
 // The schema alias must match the alias of the "SkyfishVideoPropertyEditor" data editor
-const SCHEMA_ALIAS = "Limbo.Umbraco.Skyfish";
+const SCHEMA_ALIAS = "Limbo.Umbraco.Skyfish.Video";
 
 const UI_ALIAS = "Limbo.Umbraco.Skyfish.Video.Ui";
 

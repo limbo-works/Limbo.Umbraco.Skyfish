@@ -25,7 +25,7 @@ public class SkyfishVideoPropertyEditor : DataEditor {
     /// Gets the alias of the property editor schema. This is the alias stored in the database for data types using
     /// this property editor, so it must not be changed.
     /// </summary>
-    public const string EditorAlias = "Limbo.Umbraco.Skyfish";
+    public const string EditorAlias = "Limbo.Umbraco.Skyfish.Video";
 
     /// <summary>
     /// Gets the alias of the property editor UI registered from <c>EntryPoint.js</c>.

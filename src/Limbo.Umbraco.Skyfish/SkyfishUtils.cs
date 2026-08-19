@@ -15,7 +15,7 @@ public static class SkyfishUtils {
     /// </summary>
     /// <param name="source">The source (URL) as entered by the user.</param>
     /// <returns>An instance of <see cref="SkyfishIntermediaryVideoValue"/> representing the video.</returns>
-    public static SkyfishIntermediaryVideoValue GetIntermedidryVideoValue(string source) {
+    public static SkyfishIntermediaryVideoValue GetIntermediaryVideoValue(string source) {
         return StaticServiceProvider.Instance
             .GetRequiredService<SkyfishService>()
             .GetIntermediaryVideoValue(source);
