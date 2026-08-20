@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using HtmlAgilityPack;
 using Limbo.Integrations.Skyfish;
 using Limbo.Integrations.Skyfish.Models.Media;
 using Limbo.Integrations.Skyfish.Options.Search;
@@ -16,6 +18,7 @@ using Limbo.Umbraco.Skyfish.Models.Videos.Intermediary;
 using Limbo.Umbraco.Skyfish.Options;
 using Limbo.Umbraco.Video.Models.Videos;
 using Microsoft.Extensions.Options;
+using Skybrud.Essentials.Collections.Specialized.Extensions;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 using Umbraco.Cms.Core.Cache;
@@ -67,22 +70,52 @@ public class SkyfishService {
             return true;
         }
 
-        if (RegexUtils.IsMatch(source, "<iframe src=\"(.+?)\"", out match)) {
-            try {
-                match.Groups[1].Value.Split('?', out string _, out string? query);
-                if (!string.IsNullOrWhiteSpace(query)) {
-                    var q = HttpUtility.ParseQueryString(query);
-                    if (int.TryParse(q["media"], out int uniqueMediaId)) {
-                        options = new SkyfishVideoOptions(source, SkyfishSourceType.Embed, null, uniqueMediaId);
-                        return true;
-                    }
-                }
-            } catch {
-                // ignore
-            }
-        }
+        if (TryParseIframe(source, out options)) return true;
 
         return false;
+
+    }
+
+    /// <summary>
+    /// Attempts to parse the specified <paramref name="source"/> as an iframe embed code, and return an instance of <see cref="SkyfishVideoOptions"/> if successful.
+    /// </summary>
+    /// <param name="source">The source.</param>
+    /// <param name="options">When this method returns, holds an instance of <see cref="SkyfishVideoOptions"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public virtual bool TryParseIframe(string source, [NotNullWhen(true)] out SkyfishVideoOptions? options) {
+
+        options = null;
+
+        if (string.IsNullOrWhiteSpace(source)) return false;
+
+        try {
+
+            HtmlDocument document = new();
+            document.LoadHtml(source);
+
+            HtmlNode? iframe = (HtmlNode?) document.DocumentNode.SelectSingleNode("//iframe");
+            if (iframe is null) return false;
+
+            string src = iframe.GetAttributeValue("src", string.Empty);
+            if (string.IsNullOrWhiteSpace(src)) return false;
+
+            // HtmlAgilityPack may return an HTML-encoded URL, e.g. &amp;.
+            src = HttpUtility.HtmlDecode(src);
+
+            // Parse the query string from the iframe src URL. We split on '#' first to remove any fragment, then split on '?' to get the query string part, and finally parse it into a NameValueCollection.
+            NameValueCollection query = HttpUtility.ParseQueryString(src.Split('#')[0].Split('?').Skip(1).FirstOrDefault() ?? string.Empty);
+
+            // Try to get the "media" parameter from the query string and parse it as an integer. If it fails, return false.
+            if (!query.TryGetInt32("media", out int uniqueMediaId)) return false;
+
+            options = new SkyfishVideoOptions(source, SkyfishSourceType.Embed, null, uniqueMediaId);
+            return true;
+
+        } catch {
+
+            return false;
+
+        }
 
     }
 
