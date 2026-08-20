@@ -1,7 +1,7 @@
 export default {
     limboSkyfish: {
         video: "Video",
-        refresh: "Genindlæs den valgte video",
+        refresh: "Genindlæs",
         clear: "Ryd",
         id: "ID",
         title: "Titel",

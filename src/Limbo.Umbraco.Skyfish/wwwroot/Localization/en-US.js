@@ -1,7 +1,7 @@
 export default {
     limboSkyfish: {
         video: "Video",
-        refresh: "Refresh current video",
+        refresh: "Refresh",
         clear: "Clear",
         id: "ID",
         title: "Title",

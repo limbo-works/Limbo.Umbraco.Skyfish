@@ -207,7 +207,7 @@ public class SkyfishService {
             // Throw an exception if the API response doesn't contain any media
             if (response.Body.Media.Count == 0) throw new SkyfishVideoNotFoundException(source);
 
-            // Get the first media of the response (if asny)
+            // Get the first media of the response (if any)
             media = response.Body.Media[0];
 
             // TODO: Should we validate the media type to exclude non-video media types?

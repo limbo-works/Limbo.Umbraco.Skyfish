@@ -385,18 +385,20 @@ class LimboSkyfishVideoElement extends UmbFormControlMixin(UmbLitElement, undefi
             <div>
                 <h5><umb-localize key="limboSkyfish_urlOrEmbedCode">URL or embed code</umb-localize></h5>
                 ${this.#renderInput(source)}
-                <div class="actions">
-                    <uui-button
-                        look="outline"
-                        label=${this.localize.term("limboSkyfish_refresh")}
-                        ?disabled=${this.readonly || !source.trim()}
-                        @click=${this.#onRefresh}></uui-button>
-                    <uui-button
-                        look="outline"
-                        label=${this.localize.term("limboSkyfish_clear")}
-                        ?disabled=${this.readonly || !source}
-                        @click=${this.#clear}></uui-button>
-                </div>
+                ${when(this.#details, () => html`
+                    <div class="actions">
+                        <uui-button
+                            look="outline"
+                            label=${this.localize.term("limboSkyfish_refresh")}
+                            ?disabled=${this.readonly || !source.trim()}
+                            @click=${this.#onRefresh}></uui-button>
+                        <uui-button
+                            look="outline"
+                            label=${this.localize.term("limboSkyfish_clear")}
+                            ?disabled=${this.readonly || !source}
+                            @click=${this.#clear}></uui-button>
+                    </div
+                `)}
             </div>
         `;
     }
