@@ -143,7 +143,7 @@ public class SkyfishManagementController : ManagementApiControllerBase {
     }
 
     private IActionResult InvalidSourceSpecified() {
-        if (!TryGetTranslation("errorInvalidSourceSpecified", out string? message)) message = "Source doesn't match a valid URL.";
+        if (!TryGetTranslation("errorInvalidSourceSpecified", out string? message)) message = "Source doesn't match a valid URL or embed code.";
         return UserError(StatusCodes.Status400BadRequest, message);
     }
 
