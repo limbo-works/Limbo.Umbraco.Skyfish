@@ -16,7 +16,7 @@
     <key alias="errorNoSourceSpecified">Ingen URL angivet.</key>
     <key alias="errorInvalidSourceSpecified">Den angivne URL eller embed-kode er ikke gyldig.</key>
     <key alias="errorNotConfigured">Skyfish er ikke konfigureret.</key>
-    <key alias="errorVideoNotFoundFromUrl">En video med den angivne URL blev ikke fundet.</key>
+    <key alias="errorVideoNotFoundFromUrl">En video med den angivne URL eller embed-kode blev ikke fundet.</key>
     <key alias="errorFailedGettingEmbedUrl">Det var ikke muligt at generere en embed-URL for den angivne video. Bemærk at ved store video-filer kan denne process tage lang tid - i så fald kan du prøve igen senere.</key>
   </area>
 </language>

@@ -14,7 +14,7 @@
     <key alias="errorNoSourceSpecified">No URL specified.</key>
     <key alias="errorInvalidSourceSpecified">The specified URL or embed code is not valid.</key>
     <key alias="errorNotConfigured">No credentials configured for Skyfish.</key>
-    <key alias="errorVideoNotFoundFromUrl">A video with the specified URL could not be found.</key>
+    <key alias="errorVideoNotFoundFromUrl">A video with the specified URL or embed code could not be found.</key>
     <key alias="errorFailedGettingEmbedUrl">Failed determining the embed URL of the specified video.</key>
   </area>
 </language>

@@ -153,7 +153,7 @@ public class SkyfishManagementController : ManagementApiControllerBase {
     }
 
     private IActionResult VideoNotFoundFromUrl() {
-        if (!TryGetTranslation("errorVideoNotFoundFromUrl", out string? message)) message = "A video with the specified URL could not be found.";
+        if (!TryGetTranslation("errorVideoNotFoundFromUrl", out string? message)) message = "A video with the specified URL or embed code could not be found.";
         return UserError(StatusCodes.Status404NotFound, message);
     }
 
