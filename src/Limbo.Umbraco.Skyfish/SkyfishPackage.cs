@@ -49,7 +49,8 @@ public class SkyfishPackage {
     /// <summary>
     /// Gets the URL of the documentation for this package.
     /// </summary>
-    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.skyfish/v13/docs/";
+    // [CHANGE: code review fix - the documentation URL was left pointing at the v13 docs during the Umbraco 17 upgrade] Related: Limbo.Umbraco.Skyfish.csproj, wwwroot/EntryPoint.js, Api/SkyfishSecurityFilter.cs
+    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.skyfish/docs/v17/";
 
 
 }

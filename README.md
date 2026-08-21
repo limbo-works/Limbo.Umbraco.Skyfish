@@ -1,6 +1,6 @@
 ﻿# Limbo Skyfish
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v13/main/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v17/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.Skyfish.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.Skyfish.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish)
 [![Limbo.Umbraco.Skyfish at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/limbo.umbraco.skyfish/)
@@ -11,18 +11,18 @@
 <table>
   <tr>
     <td><strong>License:</strong></td>
-    <td><a href="https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v13/main/LICENSE.md"><strong>MIT License</strong></a></td>
+    <td><a href="https://github.com/limbo-works/Limbo.Umbraco.Skyfish/blob/v17/main/LICENSE.md"><strong>MIT License</strong></a></td>
   </tr>
   <tr>
     <td><strong>Umbraco:</strong></td>
     <td>
-      Umbraco 13
+      Umbraco 17
     </td>
   </tr>
   <tr>
     <td><strong>Target Framework:</strong></td>
     <td>
-      .NET 8
+      .NET 10
     </td>
   </tr>
 </table>
@@ -36,24 +36,25 @@
 
 ## Installation
 
-### Umbraco 13
+### Umbraco 17
 
-Version 13 of this package supports Umbraco version 13. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish).
+Version 17 of this package supports Umbraco version 17. The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.Skyfish).
 
 To install the package, you can use either the .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Skyfish --version 13.0.2
+dotnet add package Limbo.Umbraco.Skyfish --version 17.0.0-alpha001
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Skyfish -Version 13.0.2
+Install-Package Limbo.Umbraco.Skyfish -Version 17.0.0-alpha001
 ```
 
 ### Other versions of Umbraco
 
+- [**`v13/main`**](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/tree/v13/main) Umbraco 13
 - ~~[**`v10/main`**](https://github.com/limbo-works/Limbo.Umbraco.Skyfish/tree/v10/main) Umbraco 10, 11 and 12~~ <sub title="Umbraco 10, 11 and 12 have reached end-of-life"><sup>(EOL)</sup></sub>
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// [CHANGE: Umbraco 17 upgrade - IDataType.Configuration was replaced by the ConfigurationAs<T> extension method] Related: PropertyEditors/SkyfishVideoPropertyEditor.cs, PropertyEditors/SkyfishVideoConfiguration.cs
+
+using System;
 using Limbo.Umbraco.Skyfish.Models.Videos;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft;
@@ -24,7 +26,7 @@ public class SkyfishVideoValueConverter : PropertyValueConverterBase {
     }
 
     public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
-        return inter is JObject json ? SkyfishVideoValue.Create(json, propertyType.DataType.Configuration as SkyfishVideoConfiguration) : null;
+        return inter is JObject json ? SkyfishVideoValue.Create(json, propertyType.DataType.ConfigurationAs<SkyfishVideoConfiguration>()) : null;
     }
 
     public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
