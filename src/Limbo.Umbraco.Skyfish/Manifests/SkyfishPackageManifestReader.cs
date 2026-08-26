@@ -34,7 +34,7 @@ public class SkyfishPackageManifestReader : IPackageManifestReader {
                 Extensions = [
                     new {
                         name = $"{alias}.EntryPoint",
-                        alias = $"{alias}.EntryPoint",
+                        alias = $"{SkyfishPackage.Name}: Entry Point",
                         type = "backofficeEntryPoint",
                         js = $"/App_Plugins/{alias}/EntryPoint.js?v={cacheBuster}"
                     }

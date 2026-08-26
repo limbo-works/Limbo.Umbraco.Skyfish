@@ -6,6 +6,8 @@ import { SkyfishService } from "@limbo/skyfish/service";
 
 const PACKAGE_ALIAS = "Limbo.Umbraco.Skyfish";
 
+const PACKAGE_NAME = "Limbo Skyfish";
+
 // The schema alias must match the alias of the "SkyfishVideoPropertyEditor" data editor
 const SCHEMA_ALIAS = "Limbo.Umbraco.Skyfish.Video";
 
@@ -16,7 +18,7 @@ function onPackageLoaded(extensionRegistry) {
     extensionRegistry.register({
         type: "localization",
         alias: `${PACKAGE_ALIAS}.EnUs`,
-        name: "English",
+        name: `${PACKAGE_NAME}: English`,
         js: () => import(`./Localization/en-US.js?v=${SkyfishPackage.cacheBuster}`),
         meta: {
             culture: "en"
@@ -26,7 +28,7 @@ function onPackageLoaded(extensionRegistry) {
     extensionRegistry.register({
         type: "localization",
         alias: `${PACKAGE_ALIAS}.DaDk`,
-        name: "Danish",
+        name: `${PACKAGE_NAME}: Danish`,
         js: () => import(`./Localization/da-DK.js?v=${SkyfishPackage.cacheBuster}`),
         meta: {
             culture: "da"
@@ -36,14 +38,14 @@ function onPackageLoaded(extensionRegistry) {
     extensionRegistry.register({
         type: "icons",
         alias: `${PACKAGE_ALIAS}.Icons`,
-        name: "Limbo Skyfish Icons",
+        name: `${PACKAGE_NAME}: Icons`,
         js: `/App_Plugins/${PACKAGE_ALIAS}/Icons.js?v=${SkyfishPackage.cacheBuster}`
     });
 
     extensionRegistry.register({
         type: "propertyEditorSchema",
         alias: SCHEMA_ALIAS,
-        name: "Limbo Skyfish Video",
+        name: `${PACKAGE_NAME}: Video Property Editor`,
         meta: {
             label: "Limbo Skyfish Video",
             icon: "limbo-skyfish-alt",
@@ -68,7 +70,7 @@ function onPackageLoaded(extensionRegistry) {
     extensionRegistry.register({
         type: "propertyEditorUi",
         alias: UI_ALIAS,
-        name: "Limbo Skyfish Video Property Editor UI",
+        name: `${PACKAGE_NAME}:  Video Property Editor UI`,
         js: () => import(`./Elements/Video.js?v=${SkyfishPackage.cacheBuster}`),
         elementName: "limbo-skyfish-video",
         meta: {
