@@ -45,7 +45,7 @@ function onPackageLoaded(extensionRegistry) {
     extensionRegistry.register({
         type: "propertyEditorSchema",
         alias: SCHEMA_ALIAS,
-        name: `${PACKAGE_NAME}: Video Property Editor`,
+        name: `${PACKAGE_NAME}: Video Property Editor Schema`,
         meta: {
             label: "Limbo Skyfish Video",
             icon: "limbo-skyfish-alt",
