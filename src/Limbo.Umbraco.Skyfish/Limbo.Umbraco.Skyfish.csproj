@@ -14,6 +14,7 @@
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
+    <Product>Limbo Skyfish</Product>
     <Title>Limbo Skyfish</Title>
     <Description>Skyfish video picker for Umbraco 17.</Description>
   </PropertyGroup>
@@ -42,12 +43,13 @@
   <ItemGroup>
     <PackageReference Include="Limbo.Integrations.Skyfish" Version="1.0.1" />
     <PackageReference Include="Limbo.Umbraco.Video" Version="17.0.0-alpha002" />
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.68" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.69" />
     <PackageReference Include="Skybrud.Essentials.AspNetCore" Version="1.0.2" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,17.999)" NoWarn="NU1902" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="[17.0.0,17.999)" NoWarn="NU1902" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[17.0.0,17.999)" NoWarn="NU1902" />
-    <PackageReference Include="Umbraco.Cms.Api.Management" Version="[17.0.0,17.999)" NoWarn="NU1902" />
+    <PackageReference Include="Skybrud.Essentials.Umbraco" Version="17.0.0-alpha010" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="[17.1.0,17.999)" NoWarn="NU1902" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="[17.1.0,17.999)" NoWarn="NU1902" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[17.1.0,17.999)" NoWarn="NU1902" />
+    <PackageReference Include="Umbraco.Cms.Api.Management" Version="[17.1.0,17.999)" NoWarn="NU1902" />
   </ItemGroup>
 
   <!-- Include package icon for NuGet -->
