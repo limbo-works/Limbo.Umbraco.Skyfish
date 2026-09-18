@@ -43,13 +43,13 @@ Version 17 of this package supports Umbraco version 17. The package is only avai
 To install the package, you can use either the .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Skyfish --version 17.0.0-alpha001
+dotnet add package Limbo.Umbraco.Skyfish --version 17.0.0-alpha002
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Skyfish -Version 17.0.0-alpha001
+Install-Package Limbo.Umbraco.Skyfish -Version 17.0.0-alpha002
 ```
 
 ### Other versions of Umbraco
